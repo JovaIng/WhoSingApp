@@ -14,7 +14,7 @@ reconocer(LstFragmento,Letra,Titulo,Artista,Genero):-
 
 la función busca, es la que hace todo el trabajo, buscando en la lista que le entrega findall la letra que coincida con el fragmento proporcionado por el usuario:
 
-(imagen 1).
+<img src="https://github.com/JovaIng/WhoSingApp/blob/master/images/image1.png" alt="image1">
 
 % mostrar todos los artistas de los géneros especificados en una lista.
 
@@ -23,21 +23,35 @@ artistasDeLosGeneros([X|Y],LstArtistas):-
     findall(Artista,artistaDelGenero(X,Artista),Lst),
        artistasDeLosGeneros(Y,LstAux), concat(Lst,LstAux,LstArtistas).
 
-(imagen 2).
+<img src="https://github.com/JovaIng/WhoSingApp/blob/master/images/image2.png" alt="image2">
 
 % mostrar el listado completo de todos los artistas registrados.
 
 mostrarTodosLosArtistas():- findall(Artista, cancion(_,Artista,_,_),LstAux), eliminaRepetidos(LstAux,LstArtistas),imprimirArtistas(LstArtistas).
 
-(imagen 3).
+<img src="https://github.com/JovaIng/WhoSingApp/blob/master/images/image3.png" alt="image3">
 
 % mostrar artista del genero especificado.
 
 artistaDelGenero(Genero,Artista):-
     cancion(_,Artista,LstGeneros,_), mismoConjunto([Genero],LstGeneros).
 
-(imagen 4).
+<img src="https://github.com/JovaIng/WhoSingApp/blob/master/images/image4.png" alt="image4">
 
 % Los predicados que contienen la información de las canciones, tienen la siguiente estructura:
 
 cancion(Titulo, Artista, LstGeneros, LstLetra).
+
+Para generar los predicados "cancion" se creo una aplicación en C# con Visual Studio; este busca la letra y el genero al indicar el nombre de la canción y artista, permitiendo con ello la rápida generación de los predicados sin tener qué escribirlos a pie.
+
+Ejemplo:
+
+<img src="https://github.com/JovaIng/WhoSingApp/blob/master/images/image5.JPG" alt="image5">
+
+% Predicado generado con aplicación
+
+<img src="https://github.com/JovaIng/WhoSingApp/blob/master/images/image6.png" alt="image6">
+
+
+Generador de predicados (.exe): http://www.mediafire.com/file/jnfh5u38qkqeomw/WhoSingApp.exe/file
+Código fuente archivo prolog: http://www.mediafire.com/file/yn7x9i16895adf5/WhoSingApp.zip/file
